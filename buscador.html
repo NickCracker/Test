@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--{{ url_for('static',filename='img/Global.PNG')}}-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/buscador.css')}}">
+    <link rel="stylesheet" href="https://bootswatch.com/5/flatly/bootstrap.min.css">
+    <title>Global pharma</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg" style="background-color:#2c3e50">
+        <div class="container-fluid">
+            <label class="navbar-brand">
+                <div class="logo">
+                    <img src="{{ url_for('static',filename='img/Global.PNG')}}" style="width: 60px;">
+                    <label class="titulo">Global pharma</label>
+                </div>
+            </label>
+            <form class="d-flex" action="/busqueda/buscar" method="POST" style="padding-right: 15px;">
+              <input class="form-control me-sm-2" type="text" placeholder="" name="entrada">
+              <button class="btn btn-info my-2 my-sm-0" type="submit">Buscar</button>
+            </form>
+          </div>
+        </div>
+    </nav>
+    
+    <div class="buscador-container">
+        <table class="table table-striped" style="border: #2c3e50 solid ;">
+            <thead>
+                <tr>
+                    <td class="head-item" style="text-align:center;background-color: #00a1f1; color:aliceblue">Codigo</td>
+                    <td class="head-item" style="text-align:center;background-color: #00a1f1; color:aliceblue">Producto</td>
+                    <td class="head-item" style="text-align:center;background-color: #00a1f1; color:aliceblue">Lote</td>
+                    <td class="head-item" style="text-align:center;background-color: #00a1f1; color:aliceblue">Stock</td>
+                    <td class="head-item" style="text-align:center;background-color: #00a1f1; color:aliceblue">Reserva</td>
+                    <td class="head-item" style="text-align:center;background-color: #00a1f1; color:aliceblue">Detalles</td>
+                </tr>
+            </thead>
+            <tbody>
+                {%for producto in productos %}
+                    <tr>
+                        {{% set code = {{producto.codigo}}%}}
+                        <td style="border: 1px solid black;text-align:center;">{{ producto.codigo}}</td>
+                        <td style="border: 1px solid black;text-align:center;">{{ producto.descripcion}}</td>
+                        <td style="border: 1px solid black;text-align:center;">{{ producto.lote}}</td>
+                        <td style="border: 1px solid black;text-align:center;">{{ producto.stock}}</td>
+                        <td style="border: 1px solid black;text-align:center;">{{ producto.reserva}}</td>
+                        <td style="border: 1px solid black;padding:10px; padding: left 10px;">
+                            <a href="/detalle/{{code}}/{{producto.lote}}" class="btn btn-outline-primary" style="display:flex; justify-content:center; align-items:center;height:25px; width:65px;">Detalle</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

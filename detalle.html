@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/detalle.css')}}">
+    <link rel="stylesheet" href="https://bootswatch.com/5/flatly/bootstrap.min.css">
+    <script src="{{ url_for('static',filename='js/detalle.js')}}"></script>
+    <title>Global pharma</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg" style="background-color:#2c3e50">
+    <div class="container-fluid">
+        <label class="navbar-brand">
+            <div class="logo">
+                <img src="{{ url_for('static',filename='img/Global.PNG')}}" style="width: 60px;">
+                <label class="titulo">Global pharma</label>
+            </div>
+        </label>
+      </div>
+    </div>
+</nav>
+
+<div class="detalle-container">
+    <p id="codigo" style="display:none;">{{productos.codigo}}</p>
+    <div class="detalle-ficha">
+        <table class="table table-striped" style="border: 2px solid #2c3e50;">
+            <tbody>
+                <tr class="detalle-tr">
+                    <td class="detalle-td" style="color:aliceblue;justify-content:center;background-color:#00a1f1">Detalles</td>
+                </tr>
+                <tr class="detalle-tr">
+                    <td class="detalle-td">Codigo: {{productos.codigo}}</td>
+                </tr>
+                <tr class="detalle-tr">
+                    <td class="detalle-td">Clase : {{productos.clase}}</td>
+                </tr>
+                <tr class="detalle-tr">
+                    <td class="detalle-td">Subclase : {{productos.subclase}}</td>
+                </tr>
+                <tr class="detalle-tr">
+                    <td class="detalle-td">Laboratorio : {{productos.laboratorio}}</td>
+                </tr>
+                <tr class="detalle-tr">
+                    <td class="detalle-td">Bodega : {{productos.bodega}}</td>
+                </tr>
+                <tr class="detalle-tr">
+                    <td class="detalle-td">Ubicacion : {{productos.ubicacion}}</td>
+                </tr>
+                <tr class="detalle-tr">
+                    <td class="detalle-td">Precio : ${{productos.precio}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="detalle-image">
+        <img id="foto" width="296px" height="326px">
+    </div>
+</div>
+</body>
+</html>
